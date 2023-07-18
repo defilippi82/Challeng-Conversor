@@ -30,15 +30,18 @@ public class ConversorGrafico extends JFrame {
 	    double valorFinal = valor * proporcion;
 	    return valorFinal;
 	}
+	private double obtenerValorNumerico(String mensaje) {
+	    while (true) {
+	        String input = JOptionPane.showInputDialog(mensaje);
+	        try {
+	            return Double.parseDouble(input);
+	        } catch (NumberFormatException ex) {
+	            JOptionPane.showMessageDialog(null, "El valor ingresado no es válido. Ingrese solo caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+	        }
+	    }
+	}
 
-	
-	/*private double convertirPesoArgADolar(double cantidadPesoArg) {
-		   
-	    double factorConversion = 0.0038;
-	    return cantidadPesoArg * factorConversion;
-	}*/
-	
-	
+		
 	public ConversorGrafico() {
 		setSize(500, 100);
 		setTitle("Conversor G5");
@@ -99,7 +102,7 @@ public class ConversorGrafico extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Que pena! Saliendo...");
+				JOptionPane.showMessageDialog(null, "Saliendo del programa...");
 				System.exit(0);
 				
 			}
@@ -151,24 +154,11 @@ public class ConversorGrafico extends JFrame {
 		        public void actionPerformed(ActionEvent e) {
 		            JOptionPane.showMessageDialog(null, "Realizar conversión: PesoArg -> Dólar");
 		            
-		            double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en PesoArg:"));
+		            double valor = obtenerValorNumerico("Ingrese la cantidad que desea Convertir");
 		            double proporcion = 0.0038; // Proporción de conversión específica para PesoArg a Dólar
 		            double resultado = convertirUnidad(valor, proporcion);
 		            JOptionPane.showMessageDialog(null, "Valor Final en Dólar: " + resultado);
-		           /* String cantidadPesoArg= JOptionPane.showInputDialog(null,"Ingrese la cantidad en PesoArg:" );
-		            
-		            if (cantidadPesoArg != null && !cantidadPesoArg.isEmpty()) {
-		                try {
-		                    double cantidad = Double.parseDouble(cantidadPesoArg);
-		                    
-		                    double resultado = convertirPesoArgADolar(cantidad);
-		                    
-		                    
-		                    JOptionPane.showMessageDialog(null, cantidadPesoArg + " PesoArg equivale a " + resultado + " Dólar");
-		                } catch (NumberFormatException ex) {
-		                    JOptionPane.showMessageDialog(null, "Ingrese una cantidad válida en PesoArg");
-		                }
-		            }*/
+		           
 		        }
 		    });
 		        
@@ -177,7 +167,7 @@ public class ConversorGrafico extends JFrame {
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
 		            JOptionPane.showMessageDialog(null, "Realizar conversión: PesoArg -> Euro");
-		            double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en PesoArg:"));
+		            double valor = obtenerValorNumerico("Ingrese la cantidad que desea Convertir");
 		            double proporcion = 0.0034; // Proporción de conversión específica para PesoArg a Dólar
 		            double resultado = convertirUnidad(valor, proporcion);
 		            JOptionPane.showMessageDialog(null, "Valor Final en Euro: " + resultado);
@@ -188,7 +178,7 @@ public class ConversorGrafico extends JFrame {
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
 		            JOptionPane.showMessageDialog(null, "Realizar conversión: PesoArg -> Libras Esterlinas");
-		             double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en PesoArg:"));
+		            double valor = obtenerValorNumerico("Ingrese la cantidad que desea Convertir");
 		            double proporcion = 0.0029; // Proporción de conversión específica para PesoArg a Dólar
 		            double resultado = convertirUnidad(valor, proporcion);
 		            JOptionPane.showMessageDialog(null, "Valor Final en Libras Esterlinas: " + resultado);
@@ -199,7 +189,7 @@ public class ConversorGrafico extends JFrame {
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
 		            JOptionPane.showMessageDialog(null, "Realizar conversión: PesoArg -> Yen japonés");
-		             double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en PesoArg:"));
+		            double valor = obtenerValorNumerico("Ingrese la cantidad que desea Convertir");
 		            double proporcion = 0.52; // Proporción de conversión específica para PesoArg a Dólar
 		            double resultado = convertirUnidad(valor, proporcion);
 		            JOptionPane.showMessageDialog(null, "Valor Final en Yen japonés: " + resultado);
@@ -210,7 +200,7 @@ public class ConversorGrafico extends JFrame {
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
 		            JOptionPane.showMessageDialog(null, "Realizar conversión: PesoArg -> Won surcoreano");
-		             double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en PesoArg:"));
+		            double valor = obtenerValorNumerico("Ingrese la cantidad que desea Convertir");
 		            double proporcion = 4.80; // Proporción de conversión específica para PesoArg a Dólar
 		            double resultado = convertirUnidad(valor, proporcion);
 		            JOptionPane.showMessageDialog(null, "Valor Final en Won surcoreano: " + resultado);
@@ -221,7 +211,7 @@ public class ConversorGrafico extends JFrame {
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
 		            JOptionPane.showMessageDialog(null, "Realizar conversión: Dólar -> PesoArg");
-		             double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en Dólares:"));
+		            double valor = obtenerValorNumerico("Ingrese la cantidad que desea Convertir");
 		            double proporcion = 264; 
 		            double resultado = convertirUnidad(valor, proporcion);
 		            JOptionPane.showMessageDialog(null, "Valor Final en PesosArg: " + resultado);
@@ -232,7 +222,7 @@ public class ConversorGrafico extends JFrame {
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
 		            JOptionPane.showMessageDialog(null, "Realizar conversión: Euro -> PesoArg");
-		            double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en Euros:"));
+		            double valor = obtenerValorNumerico("Ingrese la cantidad que desea Convertir");
 		            double proporcion = 297.55; 
 		            double resultado = convertirUnidad(valor, proporcion);
 		            JOptionPane.showMessageDialog(null, "Valor Final en PesosArg: " + resultado);
@@ -243,7 +233,7 @@ public class ConversorGrafico extends JFrame {
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
 		            JOptionPane.showMessageDialog(null, "Realizar conversión: Libras Esterlinas -> PesoArg");
-		            double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en Libras Esterlinas:"));
+		            double valor = obtenerValorNumerico("Ingrese la cantidad que desea Convertir");
 		            double proporcion = 346.44; 
 		            double resultado = convertirUnidad(valor, proporcion);
 		            JOptionPane.showMessageDialog(null, "Valor Final en PesosArg: " + resultado);
@@ -254,7 +244,7 @@ public class ConversorGrafico extends JFrame {
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
 		            JOptionPane.showMessageDialog(null, "Realizar conversión: Yen japonés -> PesoArg");
-		            double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en Yen japonés:"));
+		            double valor = obtenerValorNumerico("Ingrese la cantidad que desea Convertir");
 		            double proporcion = 1.91; 
 		            double resultado = convertirUnidad(valor, proporcion);
 		            JOptionPane.showMessageDialog(null, "Valor Final en PesosArg: " + resultado);
@@ -265,7 +255,7 @@ public class ConversorGrafico extends JFrame {
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
 		            JOptionPane.showMessageDialog(null, "Realizar conversión: Won surcoreano -> PesoArg");
-		            double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en Won surcoreano:"));
+		            double valor = obtenerValorNumerico("Ingrese la cantidad que desea Convertir");
 		            double proporcion = 297.55; 
 		            double resultado = convertirUnidad(valor, proporcion);
 		            JOptionPane.showMessageDialog(null, "Valor Final en PesosArg: " + resultado);
@@ -283,7 +273,7 @@ public class ConversorGrafico extends JFrame {
 		    opcionSalir.addActionListener(new ActionListener() {
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
-		            JOptionPane.showMessageDialog(null, "Que pena! Saliendo...");
+		            JOptionPane.showMessageDialog(null, "Saliendo del programa...");
 		            System.exit(0);
 		        }
 		    });
@@ -529,7 +519,7 @@ public class ConversorGrafico extends JFrame {
 	    });
 
 	    opcionSalir.addActionListener(e -> {
-	        JOptionPane.showMessageDialog(null, "Que pena! Saliendo...");
+	        JOptionPane.showMessageDialog(null, "Saliendo del programa...");
 	        System.exit(0);
 	    });
 
@@ -537,116 +527,7 @@ public class ConversorGrafico extends JFrame {
 	    panel.repaint();
 	}
 	
-	/*public void menuConversorDeDistancia() {
-		panel.removeAll();
-		menuBar = new JMenuBar();
-	    menu = new JMenu("Elija una opción de Conversión");
-	    opcion1 = new JMenuItem("Centímetros -> Metros");
-	    opcion2 = new JMenuItem("Centímetros -> Kilómetros");
-	    opcion3 = new JMenuItem("Metros -> Centímetros");
-	    opcion4 = new JMenuItem("Metros -> Kilómetros");
-	    opcion5 = new JMenuItem("Kilómetros -> Centímetros");
-	    opcion6 = new JMenuItem("Kilómetros -> Metros");
-	    opcionInicio = new JMenuItem("Volver al menú Inicial");
-	    opcionSalir = new JMenuItem("Salir");
-	    
-	    menu.add(opcion1);
-	    menu.add(opcion2);
-	    menu.add(opcion3);
-	    menu.add(opcion4);
-	    menu.add(opcion5);
-	    menu.add(opcion6);
-	    menu.add(opcionInicio);
-	    menu.add(opcionSalir);
-	    
-	    menuBar.add(menu);
-	    panel.add(menuBar);
-	    
-	    opcion1.addActionListener(new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            JOptionPane.showMessageDialog(null, "Realizar conversión: Centímetros -> Metros");
-	            double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en Centímetros:"));
-		            double proporcion = 0.001; 
-		            double resultado = convertirUnidad(valor, proporcion);
-		            JOptionPane.showMessageDialog(null, "Valor Final en Metros: " + resultado);
-		        }
-	    });
-	    
-	    opcion2.addActionListener(new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            JOptionPane.showMessageDialog(null, "Realizar conversión: Centímetros -> Kilómetros");
-	            double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en Centímetros:"));
-		            double proporcion = 0.00001; 
-		            double resultado = convertirUnidad(valor, proporcion);
-		            JOptionPane.showMessageDialog(null, "Valor Final en Kilómetros: " + resultado);
-	        }
-	    });
-	    
-	    opcion3.addActionListener(new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            JOptionPane.showMessageDialog(null, "Realizar conversión: Metros -> Centímetros");
-	            double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en Metros:"));
-		            double proporcion = 100; 
-		            double resultado = convertirUnidad(valor, proporcion);
-		            JOptionPane.showMessageDialog(null, "Valor Final en Centímetros: " + resultado);
-	        }
-	    });
-	    
-	    opcion4.addActionListener(new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            JOptionPane.showMessageDialog(null, "Realizar conversión: Metros -> Kilómetros");
-	            double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en Metros:"));
-		            double proporcion = 0.001; 
-		            double resultado = convertirUnidad(valor, proporcion);
-		            JOptionPane.showMessageDialog(null, "Valor Final en Kilómetros: " + resultado);
-	        }
-	    });
-	    
-	    opcion5.addActionListener(new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            JOptionPane.showMessageDialog(null, "Realizar conversión: Kilómetros -> Centímetros");
-	            double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en Kilómetros:"));
-		            double proporcion = 100000; 
-		            double resultado = convertirUnidad(valor, proporcion);
-		            JOptionPane.showMessageDialog(null, "Valor Final en Centímetros: " + resultado);
-	        }
-	    });
-	    
-	    opcion6.addActionListener(new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            JOptionPane.showMessageDialog(null, "Realizar conversión: Kilómetros -> Metros");
-	            double valor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor en Kilómetros:"));
-		            double proporcion = 1000; 
-		            double resultado = convertirUnidad(valor, proporcion);
-		            JOptionPane.showMessageDialog(null, "Valor Final en Metros: " + resultado);
-	        }
-	    });
-	    
-	    opcionInicio.addActionListener(new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            JOptionPane.showMessageDialog(null, "Volviendo al menú Inicial...");
-	            mostrarMenuInicial();
-	        }
-	    });
-	    
-	    opcionSalir.addActionListener(new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            JOptionPane.showMessageDialog(null, "Que pena! Saliendo...");
-	            System.exit(0);
-	        }
-	    });
-	    
-	    panel.revalidate(); 
-        panel.repaint();
-	}*/
+	
 	public void menuConversorDeDistancia() {
 	    panel.removeAll();
 	    panel.setLayout(new FlowLayout());
