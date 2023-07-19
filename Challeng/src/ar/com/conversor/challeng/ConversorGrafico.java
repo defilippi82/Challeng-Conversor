@@ -6,8 +6,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import java.awt.Color;
+import javax.swing.border.MatteBorder;
+import java.awt.Font;
+import javax.swing.border.TitledBorder;
+import java.awt.SystemColor;
 
-
+/**
+ * 
+ * @author defilippi82
+ *
+ */
 public class ConversorGrafico extends JFrame {
 	
 	private JMenuBar menuBar;
@@ -25,6 +34,7 @@ public class ConversorGrafico extends JFrame {
 	private JMenuItem opcionInicio;
 	private JMenuItem opcionSalir;
 	private JPanel panel;
+	private JPanel panel_1;
 	
 	public double convertirUnidad(double valor, double proporcion) {
 	    double valorFinal = valor * proporcion;
@@ -43,22 +53,31 @@ public class ConversorGrafico extends JFrame {
 
 		
 	public ConversorGrafico() {
+		getContentPane().setBackground(new Color(51, 0, 255));
 		setSize(500, 100);
-		setTitle("Conversor G5");
+		setTitle("Conversor ONE G5 #Challeng");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		panel = new JPanel();
+		panel.setBackground(new Color(0, 204, 255));
+		panel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
 		mostrarMenuInicial();
-		panel.add(menuBar);
-		add(panel);
-	}
+		getContentPane().add(panel);
+}
 
 	public void mostrarMenuInicial() {
 		//inicializacion de los atributos
 		panel.removeAll();
+		
+		panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(null, "Conversores", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
+		panel.add(panel_1);
 		menuBar = new JMenuBar();
+		panel_1.add(menuBar);
+		menuBar.setFont(new Font("FreeSans", Font.BOLD | Font.ITALIC, 13));
 		menu = new JMenu("Elija una opción");
 		opcion1 = new JMenuItem("Conversor de Moneda");
+		opcion1.setBackground(UIManager.getColor("ArrowButton.background"));
 		opcion2 = new JMenuItem("Conversor de Temperatura");
 		opcion3 = new JMenuItem("Conversor de Distancia");
 		opcionSalir = new JMenuItem("Salir");
@@ -70,7 +89,6 @@ public class ConversorGrafico extends JFrame {
 		menu.add(opcionSalir);
 		
 		menuBar.add(menu);
-		panel.add(menuBar);
 		
 		opcion1.addActionListener(new ActionListener() {
 
@@ -551,7 +569,8 @@ public class ConversorGrafico extends JFrame {
 	    panel.add(conversionPanel);
 
 	    convertButton.addActionListener(evt -> {
-	        try {
+	        
+	    	try {
 	            double inputValue = Double.parseDouble(inputField.getText());
 	            double result = 0;
 
@@ -596,12 +615,15 @@ public class ConversorGrafico extends JFrame {
 	    panel.revalidate();
 	    panel.repaint();
 	}
-
+/**
+ * 
+ * @param args
+ */
 
 	public static void main(String[] args) {
 		ConversorGrafico ventana= new ConversorGrafico();
 		ventana.setVisible(true);
-	
+
 	}
 
 }
